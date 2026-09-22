@@ -1,0 +1,20 @@
+{
+  "name": "skill-swap-platform",
+  "version": "1.0.0",
+  "description": "Full-Stack Skill Swap Platform built from scratch",
+  "scripts": {
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "npm --prefix backend run dev",
+    "build:frontend": "npm --prefix frontend run build"
+  },
+  "keywords": [
+    "skill-swap",
+    "react",
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+

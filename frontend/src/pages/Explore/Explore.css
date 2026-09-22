@@ -1,0 +1,135 @@
+.explore-page {
+  padding: 3rem 1.5rem 5rem;
+}
+
+.explore-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.explore-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.explore-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+}
+
+.search-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.clear-search-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-subtle);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.clear-search-btn:hover {
+  color: #fff;
+}
+
+.users-grid {
+  margin-top: 2rem;
+}
+
+.empty-results-box {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.empty-icon {
+  color: var(--color-text-subtle);
+}
+
+.empty-results-box h3 {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.empty-results-box p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Modal Form Styles */
+.swap-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.form-input,
+.form-textarea {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.85rem;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition-normal);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+

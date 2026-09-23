@@ -36,3 +36,4 @@ const announcementSchema = new mongoose.Schema(
 
 export const Announcement = mongoose.models.Announcement || mongoose.model('Announcement', announcementSchema);
 export default Announcement;
+

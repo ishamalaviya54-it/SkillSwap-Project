@@ -2,6 +2,7 @@
   "name": "skill-swap-platform",
   "version": "1.0.0",
   "description": "Full-Stack Skill Swap Platform built from scratch",
+  "type": "module",
   "scripts": {
     "frontend": "npm --prefix frontend run dev",
     "backend": "npm --prefix backend run dev",
@@ -15,6 +16,8 @@
     "mongodb"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^9.10.2"
+  }
 }
-

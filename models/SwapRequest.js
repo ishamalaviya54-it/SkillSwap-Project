@@ -45,3 +45,4 @@ const swapRequestSchema = new mongoose.Schema(
 
 export const SwapRequest = mongoose.models.SwapRequest || mongoose.model('SwapRequest', swapRequestSchema);
 export default SwapRequest;
+

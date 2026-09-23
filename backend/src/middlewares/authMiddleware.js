@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken';
 import { User } from '../models/User.js';
 
+/**
+ * Middleware to protect private routes using JWT Bearer token
+ */
 export const protect = async (req, res, next) => {
   let token;
 
@@ -10,6 +13,14 @@ export const protect = async (req, res, next) => {
   ) {
     try {
       token = req.headers.authorization.split(' ')[1];
+
+      if (!token || token.trim() === '') {
+        return res.status(401).json({
+          success: false,
+          message: 'Not authorized, token missing'
+        });
+      }
+
       const decoded = jwt.verify(
         token,
         process.env.JWT_SECRET || 'skillswap_super_secret_jwt_key_2026_dev'
@@ -48,3 +59,4 @@ export const protect = async (req, res, next) => {
   }
 };
 
+export default protect;

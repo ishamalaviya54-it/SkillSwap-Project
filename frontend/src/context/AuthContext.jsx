@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('skillswap_user', JSON.stringify(res.data.data));
           }
         } catch (err) {
-          console.warn('Session expired or invalid token');
+          console.warn('Session expired or invalid token', err);
           logout();
         }
       }
@@ -36,24 +36,41 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const res = await API.post('/auth/login', { email, password });
-    const { token: receivedToken, ...userData } = res.data.data;
-    
-    setToken(receivedToken);
+    const { token: receivedToken, ...userData } = res.data.data || res.data;
+    const finalToken = receivedToken || res.data.token;
+
+    setToken(finalToken);
     setUser(userData);
-    localStorage.setItem('skillswap_token', receivedToken);
+    localStorage.setItem('skillswap_token', finalToken);
     localStorage.setItem('skillswap_user', JSON.stringify(userData));
     return userData;
   };
 
-  const register = async (name, email, password) => {
-    const res = await API.post('/auth/register', { name, email, password });
-    const { token: receivedToken, ...userData } = res.data.data;
+  const register = async (firstArg, email, password) => {
+    let payload;
+    if (typeof firstArg === 'object' && firstArg !== null) {
+      payload = firstArg;
+    } else {
+      payload = { name: firstArg, email, password };
+    }
 
-    setToken(receivedToken);
+    const res = await API.post('/auth/register', payload);
+    const { token: receivedToken, ...userData } = res.data.data || res.data;
+    const finalToken = receivedToken || res.data.token;
+
+    setToken(finalToken);
     setUser(userData);
-    localStorage.setItem('skillswap_token', receivedToken);
+    localStorage.setItem('skillswap_token', finalToken);
     localStorage.setItem('skillswap_user', JSON.stringify(userData));
     return userData;
+  };
+
+  const updateUser = (updatedData) => {
+    setUser((prev) => {
+      const merged = { ...prev, ...updatedData };
+      localStorage.setItem('skillswap_user', JSON.stringify(merged));
+      return merged;
+    });
   };
 
   const logout = () => {
@@ -73,6 +90,7 @@ export const AuthProvider = ({ children }) => {
         loading,
         login,
         register,
+        updateUser,
         logout
       }}
     >
@@ -89,3 +107,4 @@ export const useAuth = () => {
   return context;
 };
 
+export default AuthContext;

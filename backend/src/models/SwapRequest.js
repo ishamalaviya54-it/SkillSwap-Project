@@ -7,20 +7,18 @@ const swapRequestSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'Requester is required']
     },
-    receiver: {
+    recipient: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: [true, 'Receiver is required'],
-      alias: 'recipient'
+      required: [true, 'Recipient is required'],
+      alias: 'receiver'
     },
     offeredSkill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: mongoose.Schema.Types.Mixed,
       required: [true, 'Offered skill is required']
     },
     wantedSkill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: mongoose.Schema.Types.Mixed,
       required: [true, 'Wanted skill is required']
     },
     message: {
@@ -42,6 +40,11 @@ const swapRequestSchema = new mongoose.Schema(
     timestamps: true
   }
 );
+
+// Virtual for alias receiver
+swapRequestSchema.virtual('receiver').get(function () {
+  return this.recipient;
+});
 
 export const SwapRequest = mongoose.models.SwapRequest || mongoose.model('SwapRequest', swapRequestSchema);
 export default SwapRequest;

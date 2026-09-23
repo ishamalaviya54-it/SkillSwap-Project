@@ -1,12 +1,23 @@
 import { Router } from 'express';
-import { getPublicUsers, getUserById, updateProfile } from '../controllers/userController.js';
+import {
+  getPublicUsers,
+  getMyProfile,
+  getUserById,
+  updateProfile
+} from '../controllers/userController.js';
 import { protect } from '../middlewares/authMiddleware.js';
 
 const router = Router();
 
+// Public routes
+router.get('/', getPublicUsers);
 router.get('/public', getPublicUsers);
-router.get('/:id', getUserById);
+
+// Private profile routes (declared BEFORE /:id so 'profile' is not matched as an ID)
+router.get('/profile', protect, getMyProfile);
 router.put('/profile', protect, updateProfile);
 
-export default router;
+// Specific user by ID
+router.get('/:id', getUserById);
 
+export default router;

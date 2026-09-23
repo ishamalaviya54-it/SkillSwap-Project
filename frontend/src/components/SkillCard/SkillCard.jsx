@@ -12,8 +12,11 @@ export const SkillCard = ({ user, onRequestSwap }) => {
     skillsWanted = [],
     availability = 'Flexible',
     rating = 5.0,
-    avatar
+    avatar,
+    profilePhoto
   } = user || {};
+
+  const displayAvatar = profilePhoto || avatar;
 
   const initials = name
     .split(' ')
@@ -27,8 +30,8 @@ export const SkillCard = ({ user, onRequestSwap }) => {
       {/* User Header */}
       <div className="skill-card-header">
         <div className="skill-card-avatar-wrapper">
-          {avatar ? (
-            <img src={avatar} alt={name} className="skill-card-avatar" />
+          {displayAvatar ? (
+            <img src={displayAvatar} alt={name} className="skill-card-avatar" />
           ) : (
             <div className="skill-card-initials">{initials}</div>
           )}

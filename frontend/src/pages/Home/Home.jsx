@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight, Shield, RefreshCw, Star, Users } from 'lucide-react';
 import Button from '../../components/Button/Button';
+import AnnouncementBanner from '../../components/announcements/AnnouncementBanner';
 import './Home.css';
 
 export const Home = () => {
   return (
     <div className="home-page">
+      <AnnouncementBanner />
       {/* Hero Section */}
       <section className="hero-section">
         <div className="container hero-container">

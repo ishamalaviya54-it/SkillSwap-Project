@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API from '../../services/api';
+import API from '../services/api';
 import AdminSidebar from './AdminSidebar';
 import AdminStats from './AdminStats';
 import AdminUsers from './AdminUsers';
@@ -115,3 +115,4 @@ export const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

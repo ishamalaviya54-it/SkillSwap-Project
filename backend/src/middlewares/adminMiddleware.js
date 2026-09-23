@@ -1,3 +1,7 @@
+/**
+ * Admin authorization middleware
+ * Checks if authenticated user has role === 'admin'
+ */
 export const authorizeAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     return next();
@@ -9,3 +13,6 @@ export const authorizeAdmin = (req, res, next) => {
   });
 };
 
+export const adminOnly = authorizeAdmin;
+export const isAdmin = authorizeAdmin;
+export default authorizeAdmin;
